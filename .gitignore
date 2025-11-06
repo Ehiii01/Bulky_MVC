@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Bulky/.vs/Bulky
+/Bulky/BulkyWeb/bin/Debug/net8.0
+/Bulky/BulkyWeb/obj
+/Bulky/.vs/ProjectEvaluation
