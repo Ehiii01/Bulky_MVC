@@ -1,4 +1,6 @@
-using BulkyWeb.Data;
+using Bulky.DataAccess.Data;
+using Bulky.DataAccess.Respository;
+using Bulky.DataAccess.Respository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
 namespace BulkyWeb
@@ -13,6 +15,8 @@ namespace BulkyWeb
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<ApplicationDbContext>(options=> 
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             var app = builder.Build();
 
@@ -31,9 +35,28 @@ namespace BulkyWeb
 
             app.UseAuthorization();
 
+
+            //app.MapAreaControllerRoute("AdminAreaConfig",
+            //    areaName: "Admin",
+            //    pattern: "Admin/{controller=Category}/{action=Index}/{id?}");
+
+            //app.MapAreaControllerRoute("AdminAreaConfig",
+            //    areaName: "Customer",
+            //    pattern: "Customer/{controller=Home}/{action=Index}/{id?}");
+
+
+           
+
+
+
+            //app.MapAreaControllerRoute("AdminAreaConfig",
+            //    areaName: "MyArea",
+            //    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }
