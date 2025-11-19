@@ -14,12 +14,12 @@
             <div class="col-6">
             </div>
             <div class="col-6 text-end">
-                <a asp-controller="Product" asp-action="Create" class="btn btn-primary">
+                <a asp-controller="Product" asp-action="Upsert" class="btn btn-primary">
                     <i class="bi bi-plus-circle"></i> Create New Product
                 </a>
             </div>
         </div>
-        <table class="table table-bordered table-striped">
+        <table id="tblData" class="table table-bordered table-striped" style="width:100%">
             <thead>
                 <tr>
                     <th>Title</th>
@@ -27,10 +27,10 @@
                     <th>Price</th>
                     <th>Author</th>
                     <th>Category</th>
-                    <th></th>
+                    @* <th></th> *@
                 </tr>
             </thead>
-            <tbody>
+            @* <tbody>
                 @foreach (var obj in Model)
                 {
                     <tr>
@@ -45,7 +45,7 @@
                             @obj.Author
                         </td>
                         <td>
-
+                            @obj.Category.Id
                         </td>
                         <td>
                             <div class="w-99 btn-group" role="group">
@@ -60,7 +60,13 @@
                         </td>
                     </tr>
                 }
-            </tbody>
+            </tbody> *@
         </table>
     </div>
 </div>
+
+@section Scripts
+{
+    <script src="~/js/product.js"></script>
+
+}
